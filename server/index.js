@@ -12,32 +12,32 @@ const app = new Koa();
 const THIRTY_MINTUES = 30 * 60 * 1000;
 const config= {
     user: "root",
-    password: "shenmin#520",
-    database: "nodesql",
+    password: "Mypwd123456$",
+    database: "mysql",
     host: "118.25.45.75"
 }
 
 app.keys = ['your-session-secret']
 app.use(session({
-        store: new mysqlStore(config),
-        rolling: true,
-        cookie: {
-            maxage:THIRTY_MINTUES
-        }
+    store: new mysqlStore(config),
+    rolling: true,
+    cookie: {
+        maxage:THIRTY_MINTUES
+    }
 }))
 
-app.use(static(path.join(__dirname, './public')));
-app.use(bodyParser());
-app.use(router.routes());
-app.use(mysqlStore());
+// app.use(static(path.join(__dirname, './public')));
+// app.use(bodyParser());
+// app.use(router.routes());
+// app.use(mysqlStore());
 
-findAllArtice()
-.then(result => {
-    console.log(result);
-})
-.catch(err => {
-    console.log(err);
-})
+// findAllArtice()
+// .then(result => {
+//     console.log(result);
+// })
+// .catch(err => {
+//     console.log(err);
+// })
 
 
 

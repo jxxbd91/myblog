@@ -4,7 +4,7 @@ module.exports = {
     dataBase: {
         DATABASE: 'nodesql',
         USERNAME: 'root',
-        PASSWORD: 'shenmin#520',
+        PASSWORD: 'Mypwd123456$',
         PORT: '3306',
         HOST: '118.25.45.75'
     }
