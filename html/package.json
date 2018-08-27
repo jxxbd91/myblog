@@ -13,5 +13,14 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "react-router-dom": "^4.3.1"
+  },
+  "proxy": {
+    "/": {
+      "target": "http://localhost:7890",
+      "changeOrigin": true
+    }
   }
 }

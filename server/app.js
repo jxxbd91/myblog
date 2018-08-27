@@ -5,9 +5,10 @@ const Router = express.Router();
 
 const app = express();
 
-app.listen(3000);
+app.listen(7890);
 
 app.get('/', (req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*')
   res.send('hello world').end();
 })
 
