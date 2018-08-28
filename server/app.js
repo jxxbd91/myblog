@@ -1,15 +1,16 @@
 const express = require('express');
-const routers = require('./routers/routers')
+const bodyParser = require('body-parser');
+const routers = require('./routers/routers');
 
 const Router = express.Router();
 
 const app = express();
+app.use(bodyParser());
 
 app.listen(7890);
 
-app.get('/', (req, res, next) => {
+app.get((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*')
-  res.send('hello world').end();
 })
 
 // 路由

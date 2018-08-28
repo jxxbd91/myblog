@@ -1,5 +1,6 @@
 module.exports = Router => {
-  Router.get('/login', (req, res, next) => {
-    res.send('dengl chengg ').end()
+  Router.post('/login', (req, res, next) => {
+    console.log(req.body)
+    res.send(req.body).end()
   })
 }
