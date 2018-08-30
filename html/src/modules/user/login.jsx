@@ -15,7 +15,8 @@ export default class Login extends Component {
       password: this.state.password
     })
       .then(res => {
-        console.log(res)
+        // 登录成功
+        this.props.history.push('/home')
       })
       .catch(err => {
         console.log(err)

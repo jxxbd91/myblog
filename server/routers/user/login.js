@@ -8,7 +8,7 @@ module.exports = Router => {
       if (results.length > 0) {
         res.send('登录成功').end()
       } else {
-        res.send('登录失败').end()
+        res.status(401).send('登录失败').end()
       }
     })
   })

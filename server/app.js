@@ -9,9 +9,5 @@ app.use(bodyParser());
 
 app.listen(7890);
 
-app.get((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*')
-})
-
 // 路由
-app.use('/user', routers.user);
+app.use('/api/user', routers.user);
