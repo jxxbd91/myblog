@@ -19,7 +19,7 @@
   },
   "proxy": {
     "/api": {
-      "target": "http://localhost:7890",
+      "target": "http://localhost:10240",
       "changeOrigin": true,
       "pathRewrite": {
         "^/api": "/api"
