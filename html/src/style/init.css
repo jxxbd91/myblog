@@ -1,0 +1,25 @@
+:global(*) {
+  margin: 0;
+  padding: 0;
+}
+:global(h1) {
+  font-weight: normal;
+}
+:global(h2) {
+  font-weight: normal;
+}
+:global(h3) {
+  font-weight: normal;
+}
+:global(h4) {
+  font-weight: normal;
+}
+:global(h5) {
+  font-weight: normal;
+}
+:global(h6) {
+  font-weight: normal;
+}
+:global(li) {
+  list-style: none;
+}

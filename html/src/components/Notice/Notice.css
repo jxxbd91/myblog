@@ -1,0 +1,21 @@
+.notice-wrap {
+  font-size: 30px;
+  width: 300px;
+  height: 100px;
+  line-height: 100px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  text-align: center;
+  position: relative;
+}
+.notice-hide {
+  display: none;
+}
+.noticeClose {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 12px;
+  cursor: pointer;
+  line-height: 20px;
+}

@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { loginApi } from '../../api/api'
+import styles from './Login.css'
 
 export default class Login extends Component {
   constructor (props) {
     super(props);
     this.state = {
       userName: '',
-      password: ''
+      password: '',
+      msg: ''
     }
   }
   clickHandle () {
@@ -16,10 +18,17 @@ export default class Login extends Component {
     })
       .then(res => {
         // 登录成功
+        this.setState({
+          msg: ''
+        })
         this.props.history.push('/home')
       })
       .catch(err => {
         console.log(err)
+        let {data: {resultMsg}} = err
+        this.setState({
+          msg: resultMsg
+        })
       })
   }
   userNameInputHandle (e) {
@@ -36,6 +45,7 @@ export default class Login extends Component {
     return (
       <div>
         <h1>登录</h1>
+        <p className={styles.loginMsg}>{this.state.msg}</p>
         <div>
           <p>
             用户名：

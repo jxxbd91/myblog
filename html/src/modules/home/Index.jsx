@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { homeInitApi } from '../../api/api'
 
 export default class HomeIndex extends Component {
   constructor (props) {
@@ -6,6 +7,15 @@ export default class HomeIndex extends Component {
     this.state = {
       msg: 'home page'
     }
+  }
+  componentWillMount () {
+    homeInitApi({})
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
   render () {
     return (
