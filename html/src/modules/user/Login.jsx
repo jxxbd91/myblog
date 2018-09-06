@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { loginApi } from '../../api/api'
+import Captcha from './Captcha'
 import styles from './Login.css'
 
 export default class Login extends Component {
@@ -8,13 +9,17 @@ export default class Login extends Component {
     this.state = {
       userName: '',
       password: '',
-      msg: ''
+      captcha: '',
+      msg: '',
+      errCount: 1,
+      random: Math.random()
     }
   }
   clickHandle () {
     loginApi({
       userName: this.state.userName,
-      password: this.state.password
+      password: this.state.password,
+      captcha: this.state.captcha
     })
       .then(res => {
         // 登录成功
@@ -26,26 +31,37 @@ export default class Login extends Component {
       .catch(err => {
         console.log(err)
         let {data: {resultMsg}} = err
-        this.setState({
-          msg: resultMsg
-        })
+        this.setState((prevState, props) => ({
+          msg: resultMsg,
+          errCount: prevState.errCount + 1
+        }))
       })
   }
+
   userNameInputHandle (e) {
     this.setState({
       userName: e.target.value
     })
   }
+
   pswInputHandle(e) {
     this.setState({
       password: e.target.value
     })
   }
+
+  captchInputHandle (e) {
+    this.setState({
+      captcha: e.target.value
+    })
+  }
+  
   render () {
     return (
       <div>
-        <h1>登录</h1>
+        {/* <h1>登录</h1> */}
         <p className={styles.loginMsg}>{this.state.msg}</p>
+        {this.state.errCount}
         <div>
           <p>
             用户名：
@@ -55,6 +71,7 @@ export default class Login extends Component {
             密&emsp;码：
             <input type="password" onInput={this.pswInputHandle.bind(this)}/>
           </p>
+          <Captcha visible={this.state.errCount>3}></Captcha>
           <p>
             <input type="button" value="登录" onClick={this.clickHandle.bind(this)}/>
           </p>
