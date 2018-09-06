@@ -1,21 +1,19 @@
 import React, { Component } from 'react'
 import styles from './Notice.css'
 
-export default class Notice extends Component {
-  constructor (props) {
+export default class NoticeComp extends Component {
+  constructor(props) {
     super(props)
     this.state = {
-      visible: false
+      visible: this.props.visible
     }
   }
-  
-  close () {
-    this.setState({
-      visible: false
-    })
+
+  close() {
+    this.props.closeFn.call(this.props.self)
   }
-  
-  render () {
+
+  render() {
     let cn = styles['notice-wrap']
     if (!this.state.visible) {
       cn += styles['notice-hide']

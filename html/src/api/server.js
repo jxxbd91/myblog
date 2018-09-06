@@ -14,7 +14,7 @@ axios.interceptors.response.use(response => {
   }
 }, error => {
   console.log(JSON.stringify(error))
-  let { response: { status, data }, config: { url } } = error
+  let { response: { status }, config: { url } } = error
   if (status === 401) {
     if (!url.includes('/api/user/')) {
       console.log('尚未登录')
