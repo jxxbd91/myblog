@@ -3,10 +3,15 @@ const { createRes } = require('../routerUtils')
 const svgCaptcha = require('svg-captcha')
 
 module.exports = Router => {
-  let errCount = 1
   Router.post('/login', (req, res, next) => {
     let { userName, password, captcha = '' } = req.body
-    if (errCount > 3 && captcha && captcha.toLowerCase() !== req.session.captcha.toLowerCase()) {
+    if (!Object.keys(req.cookies).find(item => item.includes('error_count'))) {
+      req.session[userName + '_errcount'] = 0
+      res.cookie('error_count', true, {
+        httpOnly: true
+      })
+    }
+    if (req.session[userName + '_errcount'] > 2 && (!captcha || (captcha && captcha.toLowerCase() !== req.session.captcha.toLowerCase()))) {
       res.json(createRes({
         code: '402',
         msg: '图形验证码错误'
@@ -21,11 +26,14 @@ module.exports = Router => {
           // cookie设置签名
           res.cookie('user', userName, {
             signed: true
-          });
-          req.session.user = 'abcdefg';
+          })
+          res.cookie('error_count', true, {
+            maxAge: 0
+          })
+          req.session.user = userName;
           res.send(json).end()
         } else {
-          errCount++
+          req.session[userName + '_errcount'] = req.session[userName + '_errcount'] ? (req.session[userName + '_errcount'] + 1) : 1
           let json = createRes({
             code: '402',
             msg: '登录失败'

@@ -25,8 +25,6 @@ app.use(session({
 app.listen(10240);
 
 app.use((req, res, next) => {
-  // req.session._garbage = Date();
-  // req.session.touch();
   if (req.url.includes('/api/user')) {
     next()
   } else if (!req.session.user) {

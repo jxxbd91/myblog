@@ -11,7 +11,6 @@ export default class Login extends Component {
       password: '',
       captcha: '',
       msg: '',
-      errCount: 1,
       random: Math.random()
     }
   }
@@ -32,8 +31,7 @@ export default class Login extends Component {
         console.log(err)
         let {data: {resultMsg}} = err
         this.setState((prevState, props) => ({
-          msg: resultMsg,
-          errCount: prevState.errCount + 1
+          msg: resultMsg
         }))
       })
   }
@@ -61,7 +59,6 @@ export default class Login extends Component {
       <div>
         {/* <h1>登录</h1> */}
         <p className={styles.loginMsg}>{this.state.msg}</p>
-        {this.state.errCount}
         <div>
           <p>
             用户名：
