@@ -13,12 +13,11 @@ axios.interceptors.response.use(response => {
     return response
   }
 }, error => {
-  console.log(JSON.stringify(error))
   let { response: { status }, config: { url } } = error
   if (status === 401) {
     if (!url.includes('/api/user/')) {
       console.log('尚未登录')
-      window.location.href = 'http://localhost:3000/'
+      window.location.href = 'http://localhost:3000/login'
     }
   } else {
     return Promise.reject(error)

@@ -6,3 +6,7 @@ exports.createRes = ({ code, msg, result = null }) => ({
   resultMsg: msg,
   result
 })
+
+exports.validateFields = () => {
+
+}

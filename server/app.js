@@ -18,7 +18,7 @@ app.use(session({
   rolling: true, // 每次
   cookie: {
     signed: true,
-    maxAge: 2 * 60 * 1000,
+    maxAge: 60 * 60 * 1000,
     httpOnly: true
   }
 }));
