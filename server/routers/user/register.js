@@ -14,6 +14,7 @@ module.exports = Router => {
     } else {
       // 查询是否存在当前用户
       findUser(userName, (err, results, fields) => {
+        console.log(userName)
         // 对结果进行判断
         if (results && results.length > 0) {
           res.json(createRes({

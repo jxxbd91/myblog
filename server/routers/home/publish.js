@@ -12,7 +12,7 @@ module.exports = (req, res, next) => {
     publishDB(req.session.user, title, text, (err, results, fields) => {
       if (err) {
         res.json(createRes({
-          code: '505',
+          code: '502',
           msg: '发表失败',
           result: err
         })).end()
