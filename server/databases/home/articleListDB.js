@@ -1,0 +1,1 @@
+const queryDB = require('../dbconfig')
