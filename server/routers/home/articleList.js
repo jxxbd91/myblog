@@ -15,7 +15,6 @@ const queryResults = results => {
 }
 
 module.exports = (req, res, next) => {
-  // res.send('查询所有文章').end()
   let sltAll = false
   let { authId, pageSize = 0, pageNum = 0 } = req.body
   // 处理分页数据
